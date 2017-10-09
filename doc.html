@@ -1,0 +1,442 @@
+<head>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+<style>
+body{margin:0}
+.content{max-width:800px;margin:0 auto}
+code{padding:0}
+.code_section{white-space: pre-line;background: #f8f8f8;padding: 25px;}
+h1{padding-top: 95px;}
+select[size], select[multiple]{border: 1px solid #eee;margin: 5px;}
+input[type="button"], button{border: 1px solid #d0d0d0;background-color: #f7f6f6;padding: 3px 5px;color: #a7a7a7;border-radius: 3px;}
+input[type="button"]:hover, button:hover{border: 1px solid #57ade0;color: #000;}
+</style>
+	<div style="top: 0px;width: 100%;height: 100px;background-color: #1488cc;"></div>
+	<div class="content">
+		
+		
+		<h1>Flash</h1>
+		플래시에 대한 기능입니다.
+		<h2># isSupport</h2>
+		플래시가 설치되어 있는지 확인합니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.isSupport();</span></code>
+			</pre>
+			<a id="isFlashSupported"></a>
+			<script>
+				$('#isFlashSupported').html(
+					exus.flash.isSupport() ? '플래시를 지원합니다.' : '플래시를 지원하지 않습니다.'
+				);
+			</script>
+		</div>
+		
+		<h2># generate</h2>
+		플래시를 생성합니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.generate(file, width, height, id);</span></code>
+			</pre>
+			<a id="FlashView"></a>
+			<script>
+				$('#FlashView').html(
+					exus.flash.generate(
+						'http://www.flashppt.com/images/tangramone.swf', 200, 200, 'flashview'
+					)
+				);
+			</script>
+		</div>
+		
+		<h2># remove</h2>
+		플래시를 삭제합니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.remove(id);</span></code>
+			</pre>
+		</div>
+		
+		
+		
+		<h1>Speech</h1>
+		TTS 목소리를 출력합니다.
+		
+		
+		<h2># speech</h2>
+		알림을 지원하는지 확인합니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Speech.speech(word, speecher, pitch, rate);</span></code>
+			</pre>
+			
+			<button type="button" id="speech">Speech</button>
+			
+			<input type="text" id="speechWord" value="Hello World"></input>
+			
+			<script>
+			$('#speech').click(function(){
+				exus.Speech.speech($('#speechWord').val(), "Microsoft Heami Desktop - Korean", 1, 1);
+			});
+			</script>
+		</div>
+		
+		
+	
+		
+		
+		
+		<h1>Notify</h1>
+		알람창을 띄웁니다.
+		
+		<h2># isSupport</h2>
+		알림을 지원하는지 확인합니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Notify.isSupport();</span></code>
+			</pre>
+			
+			<a id="notifyIsSupported"></a>
+			
+			<script>
+			$('#notifyIsSupported').html(
+				exus.Notify.isSupport() ? '지원합니다' : '지원하지 않습나디'
+			);
+			</script>
+		</div>
+		
+		<h2># getPermitLevel</h2>
+		권한 레벨을 확인합니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Notify.getPermitLevel();</span></code>
+			</pre>
+			
+			<a id="notifyLevel"></a>
+			
+			<script>
+			$('#notifyLevel').html(
+				exus.Notify.getPermitLevel()
+			);
+			</script>
+		</div>
+		
+		
+		<h2># getPermit</h2>
+		권한을 요청합니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Notify.getPermit();</span></code>
+			</pre>
+			
+			<button type="button" id="notifyGetPermit">알림</button>
+			
+			<script>
+			$('#notifyGetPermit').click(function(){
+				exus.Notify.getPermit();
+			});
+			</script>
+		</div>
+		
+		
+		
+		<h2># Show</h2>
+		알람창을 띄웁니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Notify.Show(message, icon, body, options);</span></code>
+			</pre>
+			
+			<button type="button" id="notifyTab">알림</button>
+			
+			<script>
+			$('#notifyTab').click(function(){
+				exus.Notify.Show('Hello World', "https://t4.ftcdn.net/jpg/01/14/07/03/160_F_114070347_KEhrDbfd2mTncHsRaSDsULn0JJBpgP2q.jpg", 'Hello World', 
+				{
+					body: 'Hello World',
+					icon: "https://t4.ftcdn.net/jpg/01/14/07/03/160_F_114070347_KEhrDbfd2mTncHsRaSDsULn0JJBpgP2q.jpg"
+				});
+			});
+			</script>
+		</div>
+		
+		
+		
+		<h1>Generator</h1>
+		조작할 수 있는 특정 배열을 얻습니다, 배열은 yield로 정의되어 차례차례대로 뽑을 수 있습니다.
+		
+		<h2># getNext</h2>
+		다음 배열값을 가져옵니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Generator.getNext();</span></code>
+			</pre>
+		</div>
+		
+		<h2># getUniqueNum</h2>
+		유니크한 숫자 배열을 얻습니다.
+		
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Generator.getUniqueNum(min, max, length);</span></code>
+			</pre>
+			
+			<a id="uniqueRand"></a>
+			
+			<script>
+				exus.Generator.getUniqueNum(1, 100, 10);
+				$('#uniqueRand').html(exus.Generator.getNext());
+				$('#uniqueRand').html($('#uniqueRand').html()+','+exus.Generator.getNext());
+			</script>
+		</div>
+		
+		<h2># getUniqueStr</h2>
+		유니크한 문자 배열을 얻습니다.
+		
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Generator.getUniqueStr(length);</span></code>
+			</pre>
+			
+			<a id="uniqueStr"></a>
+			
+			<script>
+				exus.Generator.getUniqueStr(100);
+				$('#uniqueStr').html(exus.Generator.getNext());
+				$('#uniqueStr').html($('#uniqueStr').html()+','+exus.Generator.getNext());
+			</script>
+		</div>
+		
+		<h1>Popup</h1>
+		팝업창에 대한 기능입니다.
+		
+		<h2># Enabled</h2>
+		팝업창 허용여부를 확인합니다.
+		
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Popup.Enabled();</span></code>
+			</pre>
+			
+			<a id="isPopupEnabled"></a>
+			
+			<script>
+				$('#isPopupEnabled').html(
+					exus.Popup.Enabled() ? '허용됨' : '허용되지 않음'
+				);
+			</script>
+		</div>
+		
+		
+		<h2># Open</h2>
+		새로운 팝업창을 엽니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.Popup.Open(url, width, height, p_top, p_left);</span></code>
+			</pre>
+			
+			<button type="button" id="PopupOpen" style="vertical-align:top">이동</button>
+			
+			<script>
+				$('#PopupOpen').click(function () {
+					exus.Popup.Open('https://www.google.com', 500, 500, 0, 0);
+				});
+			</script>
+		</div>
+		
+		
+		<h1>OptionList</h1>
+		옵션값을 가지는 리스트에 대한 기능입니다.
+		
+		<h2># moveSelectedItem</h2>
+		선택된 아이템을 다른 리스트로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.OptionList.moveSelectedItem(id, id);</span></code>
+			</pre>
+			
+			<div style="float: left;display:inline-block">
+				<select id="moveSelectedItem" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+					<option value="A리스트1">A리스트1</option>
+					<option value="A리스트2">A리스트2</option>
+					<option value="A리스트3">A리스트3</option>
+					<option value="A리스트4">A리스트4</option>
+					<option value="A리스트5">A리스트5</option>
+				</select>
+			</div>
+			<div class="left_margin" style="display:inline-block">
+				<select id="moveSelectedItem2" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+					<option value="B리스트1">B리스트1</option>
+					<option value="B리스트2">B리스트2</option>
+					<option value="B리스트3">B리스트3</option>
+					<option value="B리스트4">B리스트4</option>
+					<option value="B리스트5">B리스트5</option>
+				</select>
+				<br/>
+				<span class="x_btn-group">
+					<button type="button" id="moveOptionItem" style="vertical-align:top">이동</button>
+				</span>
+			</div>
+			
+			<script>
+				$('#moveOptionItem').click(function () {
+					exus.OptionList.moveSelectedItem('#moveSelectedItem', '#moveSelectedItem2');
+				});
+			</script>
+		</div>
+		
+		
+		<h2># moveAllItem</h2>
+		모든 아이템을 다른 리스트로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.OptionList.moveSelectedItem(id, id);</span></code>
+			</pre>
+			
+			<div style="float: left;display:inline-block">
+				<select id="moveAllItem" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+					<option value="A리스트1">A리스트1</option>
+					<option value="A리스트2">A리스트2</option>
+					<option value="A리스트3">A리스트3</option>
+					<option value="A리스트4">A리스트4</option>
+					<option value="A리스트5">A리스트5</option>
+				</select>
+			</div>
+			<div class="left_margin" style="display:inline-block">
+				<select id="moveAllItem2" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+					<option value="B리스트1">B리스트1</option>
+					<option value="B리스트2">B리스트2</option>
+					<option value="B리스트3">B리스트3</option>
+					<option value="B리스트4">B리스트4</option>
+					<option value="B리스트5">B리스트5</option>
+				</select>
+				<br/>
+				<span class="x_btn-group">
+					<button type="button" id="moveItemAll" style="vertical-align:top">이동</button>
+				</span>
+			</div>
+			
+			<script>
+				$('#moveItemAll').click(function () {
+					exus.OptionList.moveAllItem('#moveAllItem', '#moveAllItem2');
+				});
+			</script>
+		</div>
+		
+		
+		
+		<h2># moveItemUp</h2>
+		선택된 아이템을 위로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.generate(file, width, height, id);</span></code>
+			</pre>
+		
+			<select id="moveItemUp" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+				<option value="A리스트1">A리스트1</option>
+				<option value="A리스트2">A리스트2</option>
+				<option value="A리스트3">A리스트3</option>
+				<option value="A리스트4">A리스트4</option>
+				<option value="A리스트5">A리스트5</option>
+			</select>
+			<span class="x_btn-group">
+				<button type="button" id="moveUpItem" style="vertical-align:top">이동</button>
+			</span>
+			
+			<script>
+				$('#moveUpItem').click(function () {
+					exus.OptionList.moveItemUp('#moveItemUp');
+				});
+			</script>
+		</div>
+		
+		
+		
+		<h2># moveItemDown</h2>
+		선택된 아이템을 위로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.generate(file, width, height, id);</span></code>
+			</pre>
+			
+			<select id="moveItemDown" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+				<option value="A리스트1">A리스트1</option>
+				<option value="A리스트2">A리스트2</option>
+				<option value="A리스트3">A리스트3</option>
+				<option value="A리스트4">A리스트4</option>
+				<option value="A리스트5">A리스트5</option>
+			</select>
+			<span class="x_btn-group">
+				<button type="button" id="moveDowmItem" style="vertical-align:top">이동</button>
+			</span>
+			
+			<script>
+				$('#moveDowmItem').click(function () {
+					exus.OptionList.moveItemDown('#moveItemDown');
+				});
+			</script>
+		</div>
+		
+		
+		<h2># moveItemTop</h2>
+		선택된 아이템을 가장 위로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.generate(file, width, height, id);</span></code>
+			</pre>
+			
+			<select id="moveItemTop" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+				<option value="A리스트1">A리스트1</option>
+				<option value="A리스트2">A리스트2</option>
+				<option value="A리스트3">A리스트3</option>
+				<option value="A리스트4">A리스트4</option>
+				<option value="A리스트5">A리스트5</option>
+			</select>
+			<span class="x_btn-group">
+				<button type="button" id="moveTopItem" style="vertical-align:top">이동</button>
+			</span>
+			
+			<script>
+				$('#moveTopItem').click(function () {
+					exus.OptionList.moveItemTop('#moveItemTop');
+				});
+			</script>
+		</div>
+		
+		
+		<h2># moveItemBottom</h2>
+		선택된 아이템을 가장 아래로 이동시킵니다.
+		<div>
+			<pre class="code_section">
+				<code><span>exus.flash.generate(file, width, height, id);</span></code>
+			</pre>
+			
+			<select id="moveItemBottom" size="5" multiple="multiple" style="width:220px;vertical-align:top;margin-bottom:8px">
+				<option value="A리스트1">A리스트1</option>
+				<option value="A리스트2">A리스트2</option>
+				<option value="A리스트3">A리스트3</option>
+				<option value="A리스트4">A리스트4</option>
+				<option value="A리스트5">A리스트5</option>
+			</select>
+			<span class="x_btn-group">
+				<button type="button" id="moveBottomItem" style="vertical-align:top">이동</button>
+			</span>
+			
+			<script>
+				$('#moveBottomItem').click(function () {
+					exus.OptionList.moveItemBottom('#moveItemBottom');
+				});
+			</script>
+		</div>
+		
+		
+	</div>
+</body>
